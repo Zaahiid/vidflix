@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Header from "./components/Header";
+import "./App.css";
+// import { Route, Routes } from "react-router-dom";
+import Summary from "./components/Summary";
+import ShowCard from "./components/ShowCard";
 
 function App() {
+  const [showData, setShowData] = useState([]);
+  const fetchData = async () => {
+    const response = await fetch("https://api.tvmaze.com/search/shows?q=all");
+    if (!response.ok) {
+      throw new Error("Data could not be fetched!");
+    } else {
+      return response.json();
+    }
+  };
+  useEffect(() => {
+    fetchData()
+      .then((res) => {
+        setShowData(res);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="show-card">
+        {showData.map((data, i) => (
+          <ShowCard key={i} data={data} />
+        ))}
+        <Summary setShowData={setShowData} />
+      </div>
     </div>
   );
 }

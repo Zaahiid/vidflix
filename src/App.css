@@ -1,38 +1,90 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap");
+
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100%;
+  background-color: #03001c;
+}
+.header {
+  color: aliceblue;
   text-align: center;
+  font-size: 50px;
+  padding: 20px;
+  background-color: #09071ef2;
+  text-decoration: underline;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.show-card {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  row-gap: 30px;
+  column-gap: 30px;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+@media (max-width: 800px) {
+  .show-card {
+    flex-direction: column;
+  }
+}
+.show-card-unit {
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+  margin: 10px;
+}
+.poster {
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.show-details {
+  text-align-last: left;
+  color: #7f8487;
+}
+.info {
+  color: #d8e9a8;
+}
+
+.btn-container {
+  margin-top: 10px;
+}
+
+.btn {
+  font-family: Roboto, sans-serif;
+  font-weight: 0;
+  font-size: 18px;
+  color: #fff;
+  background-color: #0066cc;
+  padding: 10px 30px;
+  border: 2px solid #0066cc;
+  box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+  border-radius: 50px;
+  transition: 1000ms;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transition: 1000ms;
+  padding: 10px 50px;
+  transform: translateY(-0px);
+  background-color: #fff;
+  color: #0066cc;
+  border: solid 2px #0066cc;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: justify;
 }
